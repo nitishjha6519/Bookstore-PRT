@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Bookdetails = () => {
-  const [details, setDetails] = useState([]);
+  // const [details, setDetails] = useState([]);
 
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Bookdetails = () => {
       <div className="w-96 pt-10">
         <button
           className="border border-orange-400 text-orange-400 p-2 ml-0 mb-1 hover:bg-orange-400 hover:text-white rounded"
-          onClick={() => navigate("/booklist")}
+          onClick={() => navigate("/bookslist")}
         >
           Show Book List
         </button>
