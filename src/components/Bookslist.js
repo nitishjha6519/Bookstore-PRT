@@ -55,10 +55,11 @@ const Bookslist = () => {
         </button>
 
         <div className="grid grid-cols-4">
-          {arr.map((item) => {
+          {arr.map((item, i) => {
             return (
               <div
                 className="w-52 border border-white mr-8 mb-8"
+                key={i}
                 onClick={() => navigate("/bookdetails")}
               >
                 <img

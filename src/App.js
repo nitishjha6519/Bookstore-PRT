@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Bookslist from "./components/Bookslist";
+import Addnewbook from "./components/Addnewbook";
+import Bookdetails from "./components/Bookdetails";
 import Protectedroutes from "./utils/Protectedroutes";
 
 function App() {
@@ -18,6 +20,24 @@ function App() {
             element={
               <Protectedroutes>
                 <Bookslist />
+              </Protectedroutes>
+            }
+          />
+
+          <Route
+            path="/addnewbook"
+            element={
+              <Protectedroutes>
+                <Addnewbook />
+              </Protectedroutes>
+            }
+          />
+
+          <Route
+            path="/bookdetails"
+            element={
+              <Protectedroutes>
+                <Bookdetails />
               </Protectedroutes>
             }
           />
