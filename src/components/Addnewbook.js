@@ -50,8 +50,8 @@ const Addnewbook = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-screen h-screen bg-slate-800">
-      <div className="w-96 pt-10">
+    <div className="flex flex-col items-center w-screen h-screen bg-slate-800 container m-auto px-4 ">
+      <div className="w-full sm:w-96  pt-10">
         <button
           onClick={() => navigate("/bookslist")}
           className="border border-orange-400 text-orange-400 p-2 ml-0 mb-1 hover:bg-orange-400 hover:text-white rounded"
@@ -68,7 +68,7 @@ const Addnewbook = () => {
         </p>
       </div>
 
-      <form className="w-96" onSubmit={handleSubmit}>
+      <form className="w-full  sm:w-96 " onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Title of the book"

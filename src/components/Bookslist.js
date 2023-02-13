@@ -63,7 +63,7 @@ const Bookslist = () => {
             + Add New Book
           </button>
 
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {arr.map((item, i) => {
               return (
                 <div className="w-52 border border-white mr-8 mb-8" key={i}>
