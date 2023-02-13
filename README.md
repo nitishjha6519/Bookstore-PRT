@@ -1,6 +1,6 @@
 # Check the Live Project
 
-This project was bootstrapped with [Create React App](https://amazing-conkies-b4468d.netlify.app/).
+ [Bookstore](https://amazing-conkies-b4468d.netlify.app/).
 
 ## Available Scripts
 
