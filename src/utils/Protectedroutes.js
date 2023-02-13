@@ -3,9 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 const Protectedroutes = ({ children }) => {
   const navigate = useNavigate();
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
+
+  let tokenCookie = document.cookie;
+
+  let token = tokenCookie.split("token=")[1];
+  console.log(token);
   useEffect(() => {
-    if (isLogged !== true) {
+    if (token) {
+      setIsLogged(true);
+    } else {
       navigate("/");
     }
   }, []);

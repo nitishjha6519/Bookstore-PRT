@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Bookdetails = () => {
-  // const [details, setDetails] = useState([]);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const list = [
-      {
-        title: "The Hunger Games",
-        isbn: "123456",
-        publisher: "No one",
-        published_date: "2022-05-01",
-        description: "Popular",
-      },
-    ];
-  }, []);
+  const locateData = useLocation();
+  const list = locateData.state.detail;
 
   return (
     <div className="flex flex-col items-center w-screen h-screen bg-slate-800">
@@ -37,11 +25,36 @@ const Bookdetails = () => {
         </p>
       </div>
 
-      <div className="w-96">
-        <div className="flex text-white text-sm border border-white bg-black">
-          <p className="w-2/12 border">1</p>
-          <p className="w-4/12">Title</p>
-          <p>Hunger Games</p>
+      <div className="w-120">
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">1</p>
+          <p className="w-4/12 p-2">Title</p>
+          <p className="w-6/12 p-2">{list[0].title}</p>
+        </div>
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">2</p>
+          <p className="w-4/12 p-2">Author</p>
+          <p className="w-6/12 p-2">{list[0].author}</p>
+        </div>
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">3</p>
+          <p className="w-4/12 p-2">ISBN</p>
+          <p className="w-6/12 p-2">{list[0].isbn}</p>
+        </div>
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">4</p>
+          <p className="w-4/12 p-2">Publisher</p>
+          <p className="w-6/12 p-2">{list[0].publisher}</p>
+        </div>
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">5</p>
+          <p className="w-4/12 p-2">Published Date</p>
+          <p className="w-6/12 p-2">{list[0].published_date}</p>
+        </div>
+        <div className="flex text-white text-sm  bg-black">
+          <p className="w-2/12 p-2">6</p>
+          <p className="w-4/12 p-2">Description</p>
+          <p className="w-6/12 p-2">{list[0].description}</p>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [data, setdata] = useState({
+  const [state, setState] = useState({
     email: "",
     password: "",
   });
@@ -11,17 +11,27 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let URL = "http://127.0.0.1:5000/v1/users/login";
-    const Options = {
+    let Options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(state),
     };
-    console.log(data);
+    console.log(state);
     fetch(URL, Options)
-      .then((res) => console.log(res))
-      .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === "success") {
+          let token = data.token;
+          // window.localStorage.setItem("token", token);
+          document.cookie = `token=${token};path=/`;
+          navigate("/bookslist");
+        } else {
+          alert("signup please");
+        }
+      });
   };
 
   return (
@@ -32,20 +42,21 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email"
-            value={data.email}
+            value={state.email}
             className="w-full  p-2 mb-4 bg-gray-100 rounded text-center focus:outline-blue-500"
-            onChange={(e) => setdata({ ...data, email: e.target.value })}
+            onChange={(e) => setState({ ...state, email: e.target.value })}
           />
           <input
             type="password"
+            value={state.password}
             placeholder="Password"
             className="w-full  p-2 mb-4 bg-gray-100 rounded text-center focus:outline-blue-500"
-            onChange={(e) => setdata({ ...data, password: e.target.value })}
+            onChange={(e) => setState({ ...state, password: e.target.value })}
           />
 
           <button
+            type="submit"
             className="bg-blue-500 w-full p-2 mb-6 text-white rounded hover:bg-blue-800"
-            onClick={() => navigate("/bookslist")}
           >
             LOGIN
           </button>
