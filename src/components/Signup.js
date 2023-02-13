@@ -20,8 +20,15 @@ const Signup = () => {
     };
 
     fetch(URL, Options)
-      .then((response) => console.log(response))
-      .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert(`${data.status}`);
+          navigate("/");
+        } else {
+          alert("try again");
+        }
+      });
   };
 
   return (
@@ -51,7 +58,7 @@ const Signup = () => {
           />
 
           <button
-            onClick={() => navigate("/")}
+            type="submit"
             className="bg-blue-500 w-full p-2 mb-6 text-white rounded hover:bg-blue-800"
           >
             Register
