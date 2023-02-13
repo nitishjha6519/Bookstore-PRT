@@ -25,7 +25,7 @@ const Bookslist = () => {
   }, []);
 
   const handleDetail = (e) => {
-    let bookid = e.target.alt;
+    let bookid = e.target.id;
     let tokenCookie = document.cookie;
     let token = tokenCookie.split("token=")[1];
     fetch(`http://127.0.0.1:5000/v1/bookdetails/${bookid}`, {
@@ -66,13 +66,23 @@ const Bookslist = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {arr.map((item, i) => {
               return (
-                <div className="w-52 border border-white mr-8 mb-8" key={i}>
+                <div
+                  className="w-52 border border-white mr-8 mb-8 relative"
+                  key={i}
+                >
                   <img
                     className="w-full object-cover h-40"
                     src={image}
                     alt={item.isbn}
-                    onClick={handleDetail}
                   />
+
+                  <p
+                    className="text-blue-500 p-4 absolute top-0 right-0"
+                    id={item.isbn}
+                    onClick={handleDetail}
+                  >
+                    details
+                  </p>
 
                   <div className="p-4">
                     <h2 className="text-white text-lg"> {item.title}</h2>
